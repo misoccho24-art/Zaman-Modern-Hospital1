@@ -1,0 +1,1004 @@
+/* =========================================================
+   Zaman Modern Hospital — stylesheet
+   ========================================================= */
+
+:root {
+  /* Color */
+  --navy: #102A4C;
+  --blue: #1F5FA8;
+  --blue-dark: #164A87;
+  --blue-tint: #EAF2FB;
+  --bg: #F4F7FA;
+  --white: #FFFFFF;
+  --ink: #1B2430;
+  --ink-soft: #5C6773;
+  --line: #E1E7EF;
+  --green: #1E8E5A;
+  --green-tint: #E6F6EE;
+  --red: #C94A3B;
+  --red-tint: #FBEAE8;
+
+  /* Department accent colors (ribbon tags) */
+  --dep-ultra: #1F5FA8;
+  --dep-cardio: #C24236;
+  --dep-gastro: #1E8E5A;
+  --dep-critical: #7A56B8;
+  --dep-gyn: #C15A82;
+  --dep-neuro: #A8791E;
+  --dep-ortho: #2E7096;
+  --dep-ent: #1E8E8E;
+
+  /* Type */
+  --font-display: "Fraunces", "Noto Serif Bengali", serif;
+  --font-body: "Inter", "Noto Sans Bengali", sans-serif;
+
+  --shadow-sm: 0 1px 3px rgba(16, 42, 76, 0.08);
+  --shadow-md: 0 8px 24px rgba(16, 42, 76, 0.12);
+  --shadow-lg: 0 20px 50px rgba(16, 42, 76, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+ul, li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 0;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  margin: 0;
+  color: var(--navy);
+}
+
+/* remove leftover full-page background image approach */
+.bg-blur {
+  display: none;
+}
+
+.content {
+  padding-top: 76px;
+}
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+.nav {
+  background-color: var(--white);
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  width: 100%;
+  box-shadow: var(--shadow-sm);
+}
+
+.navdiv {
+  display: flex;
+  align-items: center;
+}
+
+.logo a {
+  display: flex;
+  align-items: center;
+}
+
+.logo .img {
+  height: 42px;
+  width: auto;
+  border-radius: 6px;
+}
+
+.img:hover {
+  border: none;
+  margin-top: 0;
+}
+
+.nav > p {
+  display: none;
+}
+
+.nav-call {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--blue);
+  color: var(--white);
+  font-weight: 700;
+  font-size: 15px;
+  padding: 11px 20px;
+  border-radius: 100px;
+  white-space: nowrap;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.nav-call:hover {
+  background: var(--blue-dark);
+  transform: translateY(-1px);
+}
+
+.nav-links-desktop {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .nav-links-desktop {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .nav-links-desktop a {
+    padding: 10px 16px;
+    border-radius: 100px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    font-size: 15px;
+    transition: 0.2s ease;
+  }
+  .nav-links-desktop a:hover {
+    background: var(--blue-tint);
+    color: var(--blue);
+  }
+  .nav-links-desktop a.active {
+    background: var(--blue-tint);
+    color: var(--blue);
+  }
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+/* Sidebar / mobile drawer */
+.sidebar-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: var(--navy);
+  background: var(--blue-tint);
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  cursor: pointer;
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 2000;
+}
+
+@media (min-width: 900px) {
+  .sidebar-toggle {
+    display: none;
+  }
+}
+
+.nav-list {
+  background-color: var(--navy);
+  width: 240px;
+  height: 100vh;
+  position: fixed;
+  z-index: 1999;
+  right: 0;
+  top: 0;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  text-align: left;
+  padding-top: 100px;
+  box-shadow: var(--shadow-lg);
+}
+
+.nav-list.open {
+  transform: translateX(0);
+}
+
+.nav-list li {
+  margin-top: 6px;
+  padding: 0 16px;
+}
+
+.nav-list li a {
+  display: block;
+  padding: 14px 16px;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 700;
+  border-radius: 10px;
+  transition: 0.15s;
+}
+
+.nav-list li a:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.nav-list li a.active {
+  color: var(--white);
+  background-color: var(--blue);
+}
+
+@media (min-width: 900px) {
+  .nav-list {
+    display: none;
+  }
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(16, 42, 76, 0.4);
+  z-index: 1500;
+}
+
+.loader {
+  display: none;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.filers-div, .div-s, .button-div {
+  display: none; /* replaced by .hero markup below via CSS-only reuse */
+}
+
+.hero {
+  position: relative;
+  min-height: 640px;
+  display: flex;
+  align-items: flex-end;
+  background-image:
+    linear-gradient(180deg, rgba(10, 26, 48, 0.35) 0%, rgba(8, 20, 38, 0.55) 55%, rgba(6, 15, 30, 0.88) 100%),
+    url("Jaman_Clinic.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  padding: 64px 32px 72px;
+  color: var(--white);
+}
+
+.hero-eyebrow {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(4px);
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 7px 16px;
+  border-radius: 100px;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  color: var(--white);
+  font-size: clamp(38px, 7vw, 62px);
+  line-height: 1.08;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.hero-sub {
+  font-size: clamp(17px, 2.4vw, 21px);
+  font-family: "Noto Sans Bengali", var(--font-body);
+  color: rgba(255, 255, 255, 0.92);
+  max-width: 520px;
+  margin-bottom: 32px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.btn-primary, .btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 28px;
+  border-radius: 100px;
+  font-weight: 700;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s ease;
+  font-family: var(--font-body);
+}
+
+.btn-primary {
+  background: var(--white);
+  color: var(--blue-dark);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--white);
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.fliers-but {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 28px;
+  border-radius: 100px;
+  font-weight: 700;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  background: var(--white);
+  color: var(--blue-dark);
+  box-shadow: var(--shadow-md);
+}
+
+/* =========================================================
+   24/7 BABY DELIVERY BANNER
+   ========================================================= */
+
+.delivery-banner {
+  background: linear-gradient(120deg, var(--dep-gyn), #9c3f68);
+  margin-top: -6px;
+  position: relative;
+  z-index: 2;
+}
+
+.delivery-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 26px 24px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.delivery-icon {
+  flex: none;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 100px;
+}
+
+.delivery-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.delivery-tag {
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.delivery-text h2 {
+  color: var(--white);
+  font-family: "Noto Serif Bengali", var(--font-display);
+  font-size: clamp(20px, 3vw, 26px);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.delivery-text p {
+  color: rgba(255, 255, 255, 0.92);
+  font-family: "Noto Sans Bengali", var(--font-body);
+  font-size: 14.5px;
+  line-height: 1.5;
+  max-width: 560px;
+}
+
+.delivery-cta {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--white);
+  color: #9c3f68;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 13px 22px;
+  border-radius: 100px;
+  white-space: nowrap;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.2s ease;
+}
+
+.delivery-cta:hover {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 720px) {
+  .delivery-inner {
+    flex-wrap: wrap;
+    padding: 22px 20px;
+  }
+  .delivery-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 22px;
+  }
+  .delivery-cta {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* =========================================================
+   SECTIONS / HEADINGS
+   ========================================================= */
+
+.section {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 88px 24px 24px;
+}
+
+.section-head {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 48px;
+}
+
+.section-eyebrow {
+  color: var(--blue);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.hs {
+  display: none;
+}
+
+.contact-us1, .contact-us {
+  display: none;
+}
+
+.real-text1, .real-text {
+  display: none;
+}
+
+/* =========================================================
+   DOCTOR CARDS
+   ========================================================= */
+
+.leader {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px 40px;
+}
+
+.independent, .indepe, .indep {
+  display: contents;
+}
+
+.in-div, .in-div1, .in-div2, .in-div-fix, .in-div-fix1 {
+  background: var(--white);
+  border-radius: 18px;
+  padding: 0 0 24px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 0;
+  min-height: 0;
+}
+
+.in-div:hover, .in-div1:hover, .in-div2:hover, .in-div-fix:hover, .in-div-fix1:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
+
+.special-div {
+  align-self: flex-start;
+  margin: 0 0 -34px 20px;
+  background: var(--dep-ultra);
+  border-radius: 100px;
+  width: auto;
+  max-width: calc(100% - 40px);
+  padding: 9px 16px;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+}
+
+.special {
+  color: var(--white);
+  font-family: "Noto Sans Bengali", var(--font-body);
+  font-size: 12.5px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.leader .independent:nth-of-type(1) .special-div { background: var(--dep-ultra); }
+.leader .indepe:nth-of-type(2) .special-div { background: var(--dep-cardio); }
+.leader .indep:nth-of-type(3) .special-div { background: var(--dep-gastro); }
+.leader .indep:nth-of-type(4) .special-div { background: var(--dep-critical); }
+.leader .independent:nth-of-type(5) .special-div { background: var(--dep-gyn); }
+.leader .indepe:nth-of-type(6) .special-div { background: var(--dep-neuro); }
+.leader .indep:nth-of-type(7) .special-div { background: var(--dep-ortho); }
+.leader .indep:nth-of-type(8) .special-div { background: var(--dep-ent); }
+
+.night, .core-pic, .phantom {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  object-position: top center;
+  margin-top: 0;
+}
+
+.rank-name {
+  font-family: "Noto Serif Bengali", var(--font-display);
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 18px 20px 6px;
+}
+
+.rank {
+  font-family: "Noto Sans Bengali", var(--font-body);
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  margin: 0 20px 4px;
+  line-height: 1.5;
+}
+
+.rank1 {
+  font-family: "Noto Sans Bengali", var(--font-body);
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin: 0 20px 3px;
+  line-height: 1.55;
+}
+
+.rank1:last-child {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--line);
+  color: var(--blue-dark);
+  font-weight: 600;
+}
+
+/* =========================================================
+   FOLLOW / SOCIAL
+   ========================================================= */
+
+.follows-div {
+  max-width: 1180px;
+  margin: 8px auto 64px;
+  padding: 40px 24px;
+  background: var(--blue-tint);
+  border-radius: 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  text-align: center;
+}
+
+.follows {
+  font-family: var(--font-display);
+  font-size: 24px;
+  color: var(--navy);
+  font-weight: 600;
+}
+
+.image-container {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 100px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease;
+}
+
+.image-container:hover {
+  transform: scale(1.06);
+}
+
+.image-container img {
+  width: 56px;
+  height: 56px;
+  display: block;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer {
+  padding: 56px 24px 24px;
+  background-color: var(--navy);
+  display: block;
+  height: auto;
+  margin-top: 0;
+}
+
+.supreme {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 48px;
+  justify-content: center;
+  text-align: left;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.div-li-z, .div-li-z1 {
+  min-width: 200px;
+  margin-left: 0;
+}
+
+.z-p {
+  color: var(--white);
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 14px;
+  font-family: var(--font-display);
+}
+
+.li-z {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 14.5px;
+  margin-bottom: 10px;
+  transition: color 0.15s;
+}
+
+a .li-z:hover, .li-z:hover {
+  color: var(--white);
+}
+
+.f-div {
+  text-align: center;
+  padding-top: 20px;
+  background: var(--navy);
+}
+
+.f-p {
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0;
+  white-space: normal;
+  font-family: var(--font-body);
+  font-weight: 400;
+}
+
+/* =========================================================
+   CONTACT PAGE
+   ========================================================= */
+
+.contact-hero {
+  background: linear-gradient(135deg, var(--navy), var(--blue-dark));
+  padding: 68px 24px 90px;
+  text-align: center;
+}
+
+.contact-hero h1 {
+  color: var(--white);
+  font-size: clamp(32px, 5vw, 44px);
+  margin-bottom: 12px;
+}
+
+.contact-hero p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 16px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.contact-grid {
+  max-width: 1000px;
+  margin: -50px auto 80px;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+.in-div-c, .in-div-c1, .in-div-c2, .in-div-c3 {
+  background: var(--white);
+  border-radius: 18px;
+  padding: 36px 24px;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: auto;
+  margin-top: 0;
+  transition: transform 0.2s ease;
+}
+
+.in-div-c:hover, .in-div-c1:hover, .in-div-c2:hover, .in-div-c3:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.in-div-c p, .in-div-c1 p, .in-div-c2 p, .in-div-c3 p {
+  width: auto;
+  line-height: 1.5;
+  color: var(--ink);
+  font-family: var(--font-body);
+}
+
+.in-div-c .rank, .in-div-c1 .rank, .in-div-c2 .rank, .in-div-c3 .rank {
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.phone, .mail {
+  width: 56px;
+  height: 56px;
+  margin: 0 0 18px;
+  padding: 14px;
+  background: var(--blue);
+  border-radius: 100px;
+  box-sizing: content-box;
+}
+
+/* =========================================================
+   CALENDAR / SCHEDULE PAGE (store.html)
+   ========================================================= */
+
+.schedule-hero {
+  background: linear-gradient(135deg, var(--navy), var(--blue-dark));
+  padding: 68px 24px 56px;
+  text-align: center;
+}
+
+.schedule-hero h1 {
+  color: var(--white);
+  font-size: clamp(30px, 5vw, 42px);
+}
+
+.schedule-hero p {
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 10px;
+}
+
+.schedule-wrap {
+  max-width: 720px;
+  margin: -34px auto 80px;
+  padding: 0 20px;
+}
+
+.day-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  background: var(--white);
+  border-radius: 16px 16px 0 0;
+  padding: 16px;
+  box-shadow: var(--shadow-md);
+}
+
+.day-btn {
+  flex: 1 1 auto;
+  min-width: 56px;
+  padding: 11px 10px;
+  border: none;
+  border-radius: 100px;
+  background: var(--blue-tint);
+  color: var(--navy);
+  font-family: "Noto Sans Bengali", var(--font-body);
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.15s ease;
+}
+
+.day-btn:hover {
+  background: #dbe9f9;
+}
+
+.day-btn.active {
+  background: var(--blue);
+  color: var(--white);
+}
+
+.day-list {
+  background: var(--white);
+  border-radius: 0 0 16px 16px;
+  box-shadow: var(--shadow-md);
+  padding: 8px 20px 20px;
+}
+
+.day-list-heading {
+  font-family: "Noto Serif Bengali", var(--font-display);
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 15px;
+  padding: 16px 0 6px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 6px;
+}
+
+.doc-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.doc-row:last-of-type {
+  border-bottom: none;
+}
+
+.doc-row-dot {
+  flex: none;
+  width: 10px;
+  height: 10px;
+  margin-top: 7px;
+  border-radius: 50%;
+}
+
+.doc-row-text {
+  min-width: 0;
+}
+
+.doc-row-name {
+  font-family: "Noto Serif Bengali", var(--font-display);
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 15.5px;
+}
+
+.doc-row-dept {
+  font-family: "Noto Sans Bengali", var(--font-body);
+  color: var(--ink-soft);
+  font-size: 13px;
+  margin-top: 2px;
+  line-height: 1.45;
+}
+
+.doc-row-time {
+  font-family: "Noto Sans Bengali", var(--font-body);
+  color: var(--blue-dark);
+  font-weight: 600;
+  font-size: 12.5px;
+  margin-top: 4px;
+}
+
+.day-list-absent-heading {
+  font-family: "Noto Sans Bengali", var(--font-body);
+  color: var(--ink-soft);
+  font-weight: 700;
+  font-size: 12.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 18px;
+}
+
+.day-list-absent-names {
+  font-family: "Noto Sans Bengali", var(--font-body);
+  color: var(--ink-soft);
+  font-size: 13px;
+  margin-top: 6px;
+  line-height: 1.6;
+}
+
+.schedule-note {
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 13.5px;
+  margin-top: 18px;
+}
+
+@media (max-width: 480px) {
+  .day-btn {
+    min-width: 44px;
+    padding: 10px 6px;
+    font-size: 13px;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 640px) {
+  .nav {
+    padding: 0 16px;
+  }
+  .logo .img {
+    height: 34px;
+  }
+  .nav-call span {
+    display: none;
+  }
+  .nav-call {
+    padding: 11px 14px;
+  }
+  .hero {
+    min-height: 560px;
+  }
+  .hero-inner {
+    padding: 40px 20px 48px;
+  }
+  .section {
+    padding: 56px 16px 16px;
+  }
+  .leader {
+    grid-template-columns: 1fr;
+    padding: 0 16px 16px;
+  }
+  .contact-grid {
+    margin-top: -34px;
+  }
+}

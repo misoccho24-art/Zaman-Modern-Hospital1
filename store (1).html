@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zaman Modern Hospital | Calendar</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body class="body">
+    <div class="bg-blur"></div>
+
+    <div class="content">
+        <nav class="nav">
+            <div class="navdiv">
+                <div class="logo"><a href="index.html"><img class="img" src="Untitled design (14).png" alt="Zaman Modern Hospital"></a></div>
+            </div>
+
+            <div class="nav-links-desktop">
+                <a href="index.html">Home</a>
+                <a href="contact.html">Contact</a>
+                <a href="store.html" class="active">Calendar</a>
+            </div>
+
+            <div class="nav-right">
+                <a class="nav-call" href="tel:01780261010">📞 <span>01780-261010</span></a>
+            </div>
+        </nav>
+
+        <div class="sidebar-toggle" id="sidebarToggle">☰</div>
+
+        <nav class="nav-list" id="sidebar">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="store.html" class="active">Calendar</a></li>
+        </nav>
+
+        <section class="schedule-hero">
+            <h1>Doctors' Weekly Schedule</h1>
+            <p>দিন বেছে নিন, দেখুন সেদিন কোন ডাক্তার আছেন।</p>
+        </section>
+
+        <div class="schedule-wrap">
+            <div class="day-picker" id="dayPicker">
+                <button type="button" class="day-btn" data-day="sat">শনি</button>
+                <button type="button" class="day-btn" data-day="sun">রবি</button>
+                <button type="button" class="day-btn" data-day="mon">সোম</button>
+                <button type="button" class="day-btn" data-day="tue">মঙ্গল</button>
+                <button type="button" class="day-btn" data-day="wed">বুধ</button>
+                <button type="button" class="day-btn" data-day="thu">বৃহঃ</button>
+                <button type="button" class="day-btn" data-day="fri">শুক্র</button>
+            </div>
+
+            <div class="day-list" id="dayList"></div>
+
+            <p class="schedule-note">নির্দিষ্ট সময়সূচী ও বিস্তারিত জানতে হোম পেজে সংশ্লিষ্ট ডাক্তারের প্রোফাইল দেখুন অথবা কল করুন।</p>
+        </div>
+
+        <footer class="footer">
+            <div class="supreme">
+                <div class="div-li-z">
+                    <p class="z-p">Quick Links</p>
+                    <a href="index.html"><li class="li-z">Home Page</li></a>
+                    <a href="contact.html"><li class="li-z">Contact Info</li></a>
+                    <a href="store.html"><li class="li-z">Calendar</li></a>
+                </div>
+
+                <div class="div-li-z1">
+                    <p class="z-p">Community</p>
+                    <a href="https://www.facebook.com/zamanmodernhospital/?locale=bn_IN"><li class="li-z">Facebook</li></a>
+                    <li class="li-z">suruzzaman91@gmail.com</li>
+                    <li class="li-z">For Serial: 01780-261010</li>
+                </div>
+            </div>
+        </footer>
+
+        <div class="f-div">
+            <p class="f-p">© 2026 Zaman Modern Hospital Inc | Developed by M I</p>
+        </div>
+    </div>
+
+    <script>
+        const toggle = document.getElementById("sidebarToggle");
+        const sidebar = document.getElementById("sidebar");
+
+        if (toggle && sidebar) {
+            toggle.addEventListener("click", () => {
+                sidebar.classList.toggle("open");
+            });
+        }
+
+        const dayLabels = { sat: "শনিবার", sun: "রবিবার", mon: "সোমবার", tue: "মঙ্গলবার", wed: "বুধবার", thu: "বৃহস্পতিবার", fri: "শুক্রবার" };
+
+        const doctors = [
+            { name: "ডাঃ মোঃ সুরুজ জামান", dept: "আল্ট্রাসাউন্ড বিশেষজ্ঞ", color: "var(--dep-ultra)", time: "সকাল ১১টা - দুপুর ১টা, দুপুর ৩টা - রাত ৮টা", days: ["sat","sun","mon","tue","wed","thu","fri"] },
+            { name: "ডাঃ মোস্তাক আহম্মেদ", dept: "হৃদরোগ ও মেডিসিন বিশেষজ্ঞ", color: "var(--dep-cardio)", time: "বিকাল ৩টা - রাত ৮টা", days: ["mon","tue","wed","thu"] },
+            { name: "ডাঃ সৈয়দা মুবাশশারাহ মাহফুজ", dept: "লিভার, গ্যাস্ট্রিক, পরিপাকতন্ত্র ও মেডিসিন বিশেষজ্ঞ", color: "var(--dep-gastro)", time: "সকাল ১০টা - রাত ৮টা", days: ["fri"] },
+            { name: "ডাঃ নুমেরা সিদ্দাকী", dept: "ক্রিটিক্যাল কেয়ার মেডিসিন ও ডায়াবেটিস বিশেষজ্ঞ", color: "var(--dep-critical)", time: "সারাদিন", days: ["fri"] },
+            { name: "ডাঃ সাবরিনা আফরিন", dept: "গাইনী, প্রসূতি ও বন্ধ্যাত্ব রোগ বিশেষজ্ঞ ও সার্জন", color: "var(--dep-gyn)", time: "সকাল ১০টা - দুপুর ১টা, বিকাল ৩টা - রাত ৮টা", days: ["sat","sun","mon","tue","wed","thu","fri"] },
+            { name: "ডাঃ তাহমিনা জাহান তমা", dept: "মেডিসিন, নিউরোমেডিসিন, ব্রেইন, স্ট্রোক, স্নায়ুরোগ বিভাগ", color: "var(--dep-neuro)", time: "সারাদিন", days: ["fri"] },
+            { name: "ডাঃ মোঃ জিয়াউল ইসলাম", dept: "হাড়-জোড়া, বাত-ব্যথা, মেরুদণ্ড, প্যারালাইসিস রোগ বিশেষজ্ঞ ও ট্রমা সার্জন", color: "var(--dep-ortho)", time: "বিকাল ৩টা - রাত ৮টা", days: ["sat","sun","mon","tue","wed","thu","fri"] },
+            { name: "ডাঃ মুন্তাসির আল মারুফ", dept: "নাক, কান-গলা রোগ বিশেষজ্ঞ এবং হেড নেক সার্জন", color: "var(--dep-ent)", time: "সারাদিন", days: ["fri"] }
+        ];
+
+        const dayBtns = document.querySelectorAll(".day-btn");
+        const dayList = document.getElementById("dayList");
+
+        function renderDay(day) {
+            dayBtns.forEach(b => b.classList.toggle("active", b.dataset.day === day));
+
+            const present = doctors.filter(d => d.days.includes(day));
+            const absent = doctors.filter(d => !d.days.includes(day));
+
+            let html = `<p class="day-list-heading">${dayLabels[day]} — উপস্থিত ${present.length} জন ডাক্তার</p>`;
+
+            html += present.map(d => `
+                <div class="doc-row">
+                    <span class="doc-row-dot" style="background:${d.color}"></span>
+                    <div class="doc-row-text">
+                        <p class="doc-row-name">${d.name}</p>
+                        <p class="doc-row-dept">${d.dept}</p>
+                        <p class="doc-row-time">সময়ঃ ${d.time}</p>
+                    </div>
+                </div>
+            `).join("");
+
+            if (absent.length) {
+                html += `<p class="day-list-absent-heading">এই দিন উপস্থিত নেই</p>`;
+                html += `<p class="day-list-absent-names">${absent.map(d => d.name).join(" · ")}</p>`;
+            }
+
+            dayList.innerHTML = html;
+        }
+
+        dayBtns.forEach(btn => {
+            btn.addEventListener("click", () => renderDay(btn.dataset.day));
+        });
+
+        const jsDayMap = ["sun","mon","tue","wed","thu","fri","sat"];
+        renderDay(jsDayMap[new Date().getDay()]);
+    </script>
+</body>
+</html>
