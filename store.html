@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zaman Modern Hospital | Calendar</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body class="body">
+    <div class="bg-blur"></div>
+
+    <div class="content">
+        <nav class="nav">
+            <div class="navdiv">
+                <div class="logo"><a href="index.html"><img class="img" src="Untitled design (14).png" alt="Zaman Modern Hospital"></a></div>
+            </div>
+
+            <div class="nav-links-desktop">
+                <a href="index.html">Home</a>
+                <a href="contact.html">Contact</a>
+                <a href="store.html" class="active">Calendar</a>
+            </div>
+
+            <div class="nav-right">
+                <a class="nav-call" href="tel:01780261010">📞 <span>01780-261010</span></a>
+            </div>
+        </nav>
+
+        <div class="sidebar-toggle" id="sidebarToggle">☰</div>
+
+        <nav class="nav-list" id="sidebar">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="store.html" class="active">Calendar</a></li>
+        </nav>
+
+        <section class="schedule-hero">
+            <h1>Doctors' Weekly Schedule</h1>
+            <p>কোন দিন কোন ডাক্তার উপস্থিত থাকবেন, তা দেখে সিরিয়াল দিন।</p>
+        </section>
+
+        <div class="schedule-wrap">
+            <div class="schedule-legend">
+                <span><span class="legend-dot green"></span>উপস্থিত</span>
+                <span><span class="legend-dot red"></span>অনুপস্থিত</span>
+            </div>
+
+            <div class="schedule-table-scroll">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>ডাক্তার</th>
+                            <th>শনি</th>
+                            <th>রবি</th>
+                            <th>সোম</th>
+                            <th>মঙ্গল</th>
+                            <th>বুধ</th>
+                            <th>বৃহঃ</th>
+                            <th>শুক্র</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="doc-name">ডাঃ মোঃ সুরুজ জামান</td>
+                            <td><span class="status-dot green"></span></td>
+                            <td><span class="status-dot green"></span></td>
+                            <td><span class="status-dot green"></span></td>
+                            <td><span class="status-dot green"></span></td>
+                            <td><span class="status-dot green"></span></td>
+                            <td><span class="status-dot green"></span></td>
+                            <td><span class="status-dot green"></span></td>
+                        </tr>
+                        <tr>
+                            <td class="doc-name">ডাঃ মোস্তাক আহম্মেদ</td>
+                            <td><span class="status-dot red"></span></td>
+                            <td><span class="status-dot red"></span></td>
+                            <td><span class="status-dot green"></span></td>
+                            <td><span class="status-dot green"></span></td>
+                            <td><span class="status-dot green"></span></td>
+                            <td><span class="status-dot green"></span></td>
+                            <td><span class="status-dot red"></span></td>
+                        </tr>
+                        <tr>
+                            <td class="doc-name">ডাঃ সৈয়দা মুবাশশারাহ মাহফুজ</td>
+                            <td><span class="status-dot red"></span></td>
+                            <td><span class="status-dot red"></span></td>
+                            <td><span class="status-dot red"></span></td>
+                            <td><span class="status-dot red"></span></td>
+                            <td><span class="status-dot red"></span></td>
+                            <td><span class="status-dot red"></span></td>
+                            <td><span class="status-dot green"></span></td>
+                        </tr>
+                        <tr>
+                            <td class="doc-name">ডাঃ নুমেরা সিদ্দাকী</td>
+                            <td><span class="status-dot red"></span></td>
+                            <td><span class="status-dot red"></span></td>
+                            <td><span class="status-dot red"></span></td>
+                            <td><span class="status-dot red"></span></td>
+                            <td><span class="status-dot red"></span></td>
+                            <td><span class="status-dot red"></span></td>
+                            <td><span class="status-dot green"></span></td>
+                        </tr>
+                        <tr>
+                            <td class="doc-name">ডাঃ সাবরিনা আফরিন</td>
+                            <td><span class="status-dot green"></span></td>
+                            <td><span class="status-dot green"></span></td>
+                            <td><span class="status-dot green"></span></td>
+                            <td><span class="status-dot green"></span></td>
+                            <td><span class="status-dot green"></span></td>
+                            <td><span class="status-dot green"></span></td>
+                            <td><span class="status-dot green"></span></td>
+                        </tr>
+                        <tr>
+                            <td class="doc-name">ডাঃ তাহমিনা জাহান তমা</td>
+                            <td><span class="status-dot red"></span></td>
+                            <td><span class="status-dot red"></span></td>
+                            <td><span class="status-dot red"></span></td>
+                            <td><span class="status-dot red"></span></td>
+                            <td><span class="status-dot red"></span></td>
+                            <td><span class="status-dot red"></span></td>
+                            <td><span class="status-dot green"></span></td>
+                        </tr>
+                        <tr>
+                            <td class="doc-name">ডাঃ মোঃ জিয়াউল ইসলাম</td>
+                            <td><span class="status-dot green"></span></td>
+                            <td><span class="status-dot green"></span></td>
+                            <td><span class="status-dot green"></span></td>
+                            <td><span class="status-dot green"></span></td>
+                            <td><span class="status-dot green"></span></td>
+                            <td><span class="status-dot green"></span></td>
+                            <td><span class="status-dot green"></span></td>
+                        </tr>
+                        <tr>
+                            <td class="doc-name">ডাঃ মুন্তাসির আল মারুফ</td>
+                            <td><span class="status-dot red"></span></td>
+                            <td><span class="status-dot red"></span></td>
+                            <td><span class="status-dot red"></span></td>
+                            <td><span class="status-dot red"></span></td>
+                            <td><span class="status-dot red"></span></td>
+                            <td><span class="status-dot red"></span></td>
+                            <td><span class="status-dot green"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="schedule-note">মোবাইলে টেবিলটি পাশে স্ক্রল করে সবগুলো দিন দেখুন। নির্দিষ্ট সময়সূচীর জন্য হোম পেজে সংশ্লিষ্ট ডাক্তারের প্রোফাইল দেখুন অথবা কল করুন।</p>
+        </div>
+
+        <footer class="footer">
+            <div class="supreme">
+                <div class="div-li-z">
+                    <p class="z-p">Quick Links</p>
+                    <a href="index.html"><li class="li-z">Home Page</li></a>
+                    <a href="contact.html"><li class="li-z">Contact Info</li></a>
+                    <a href="store.html"><li class="li-z">Calendar</li></a>
+                </div>
+
+                <div class="div-li-z1">
+                    <p class="z-p">Community</p>
+                    <a href="https://www.facebook.com/zamanmodernhospital/?locale=bn_IN"><li class="li-z">Facebook</li></a>
+                    <li class="li-z">suruzzaman91@gmail.com</li>
+                    <li class="li-z">For Serial: 01780-261010</li>
+                </div>
+            </div>
+        </footer>
+
+        <div class="f-div">
+            <p class="f-p">© 2026 Zaman Modern Hospital Inc | Developed by M I</p>
+        </div>
+    </div>
+
+    <script>
+        const toggle = document.getElementById("sidebarToggle");
+        const sidebar = document.getElementById("sidebar");
+
+        if (toggle && sidebar) {
+            toggle.addEventListener("click", () => {
+                sidebar.classList.toggle("open");
+            });
+        }
+    </script>
+</body>
+</html>
